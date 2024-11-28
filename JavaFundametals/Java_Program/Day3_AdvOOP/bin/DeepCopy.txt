@@ -1,0 +1,49 @@
+One way to implement deep copy is to add copy constructors to each associated class. A copy constructor takes an instance of 'this' as its single argument and copies all the values from it. Quite some work, but pretty straightforward and safe.
+
+EDIT: note that you don't need to use accessor methods to read fields. You can access all fields directly because the source instance is always of the same type as the instance with the copy constructor. Obvious but might be overlooked.
+
+Example:
+
+public class Order {
+
+    private long number;
+
+    public Order() {
+    }
+
+    /**
+     * Copy constructor
+     */
+    public Order(Order source) {
+        number = source.number;
+    }
+}
+
+
+public class Customer {
+
+    private String name;
+    private List<Order> orders = new ArrayList<Order>();
+
+    public Customer() {
+    }
+
+    /**
+     * Copy constructor
+     */
+    public Customer(Customer source) {
+        name = source.name;
+        for (Order sourceOrder : source.orders) {
+            orders.add(new Order(sourceOrder));
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+Edit: Note that copy constructors don't take inheritance into account. For example: If you pass an OnlineOrder (a subclass of Order) to a copy constructor a regular Order instance will be created in the copy, unless you solve this explicitly. You could use reflection to look up a copy constructor in the runtime type of the argument. But I would suggest to not go this route and look for another solution if inheritance needs to be covered in a general way.

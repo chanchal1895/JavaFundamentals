@@ -1,0 +1,15 @@
+Q.1. Which of the following options correctly add 1 month and 1 day to a given LocalDate -
+
+	1.None of the new date related classes have public constructors. So using new to create their instances would be invalid.
+		Ex- LocalDate ld2 = ld.plus(new Period(0, 1, 1));//invalid
+
+	2.ofXXX are static methods of Period class. Therefore, Period.ofMonths(1).ofDays(1) will give you a Period of only 1 day.
+		The previous call to ofMonths(1) does return an instance of Period comprising 1 month but that instance is irrelevant because ofDays is a static method.
+		Ex-LocalDate ld2 = ld.plus(Period.ofMonths(1).ofDays(1));//invalid
+	
+	3.public static Period of(int years, int months, int days)
+	  Obtains a Period representing a number of years, months and days.
+	  This creates an instance based on years, months and days.
+	  Ex-LocalDate ld2 = ld.plus(Period.of(0, 1, 1)); //Valid
+
+

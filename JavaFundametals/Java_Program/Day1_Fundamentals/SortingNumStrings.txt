@@ -1,0 +1,18 @@
+here is an Arrays.sort(Object[]) that you can use to sort arbitrary objects.
+The natural ordering for String is lexicographic.
+Java arrays are covariant: a String[] is an Object[].
+So, given String[] sarr, if you want to sort it lexicographically (i.e. "1" < "10" < "2"), simply Arrays.sort(sarr); works. 
+It doesn't matter if the strings contain numbers or not.
+
+If you want to sort the strings as if they are numbers (i.e. "1" < "2" < "10"), then you need to convert the strings to numeric values.
+ Depending on the range of these numbers, Integer.parseInt might do; you can always use BigInteger otherwise.
+
+Let's assume that BigInteger is required.
+
+You now have two options:
+
+Convert String[] to BigInteger[], then since BigInteger implements Comparable<BigInteger>,
+you can use Arrays.sort using its natural ordering. You may then convert the sorted BigInteger[] back to String[].
+
+Convert String to BigInteger "just-in-time" for comparison by a custom Comparator<String>.
+ Since Arrays.sort uses the comparison based mergesort, you can expect O(N log N) comparisons, and therefore as many conversions.

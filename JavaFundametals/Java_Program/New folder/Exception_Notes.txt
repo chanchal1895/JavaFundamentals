@@ -1,0 +1,61 @@
+-Checked exceptions must be handled or declared.
+
+-When a class overrides a method from a superclass or implements a method from an interface, it’s not allowed to add new checked
+ exceptions to the method signature.
+
+-A subclass is allowed to declare fewer exceptions than the superclass or interface
+
+-The throw keyword is used when you actually want to throw an exception—for example, throw new RuntimeException(). The
+ throws keyword is used in a method declaration.
+ 
+ when we try to cast an Integer to a String. Since String does not extend
+ Integer, this is not allowed and a ClassCastException is thrown.
+
+- ArrayIndexOutOfBoundsException, IllegalArgumentException, and NumberFormatException are runtime exceptions. Sorry, you have to
+  memorize them. Any class that extends RuntimeException is a runtime (unchecked) exception. Classes that extend Exception but not RuntimeException are checked exceptions.
+  
+9.java.lang.Exception is a checked Exception. Which means, the method that throws this exception must declare it in the throws clause. Hence, yourMethod must declare throws Exception in its throws clause.
+
+Now, since the call to yourMethod in myMethod can also potentially throw an exception, myMethod must also declare it in its throws clause. By the same logic, main method should also declare it in its throws clause.
+
+Another alternative is to catch this exception in myMethod:
+
+public void myMethod(){
+
+   try{
+     yourMethod();
+   }
+   catch(Exception e){  
+// since you are catching the exception thrown by yourMethod,
+//there is no need to declare it in the throws clause of myMethod.
+      e.printStackTrace();
+   }
+}
+
+Further, since a call to myMethod cannot throw Exception anymore,
+//the main method does not need to declare it either.
+
+Yet another alternative is to catch the exception in the main method:
+
+    public static void main(String[] args) {
+        TestClass tc = new TestClass();
+        try{
+          tc.myMethod();
+        }
+       catch(Exception e){  // since you are catching the exception thrown by
+//myMethod, there is no need to declare it in the throws clause of main.
+         e.printStackTrace();
+       }
+    }
+    
+    public void myMethod()  throws Exception{ //Notice the throws clause here.
+        yourMethod();
+    }
+	
+	
+10.There are multiple view points regarding checked and and unchecked exceptions. As per the official Java tutorial ( http://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html ) :  If a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception.
+Here, the client basically means the caller of a method.
+
+Another way to look at exceptions is to see the cause of the exception in terms of whether it is internal or external to the program's code. For example, an incorrectly written code may try to access a reference pointing to null, or it may try to access an array beyond its length. These are internal sources of exception. Here, using runtime exceptions is appropriate because ideally these problems should be identified while testing and should not occur when the program is ready for deployment.
+
+On the other hand, a program interacting with files may not be able to do its job at all if a file is not available but it should anticipate this situation. This is an external source of an exception and has nothing to do with a program's code as such. It is therefore appropriate to use a checked exception here.

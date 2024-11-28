@@ -1,0 +1,17 @@
+
+newly introduced Optional class in java.util package. 
+This class is introduced to avoid NullPointerException that we frequently encounters 
+if we do not perform null checks in our code.
+
+ Using this class we can easily check whether a variable has null value or
+not and by doing this we can avoid the NullPointerException.
+
+methods :
+isPresent : if a value is present returns true else return false.
+isEmpty: Opposite of isPresent. If a value is not present return true.
+stream(): Introduced in JDK 9. If a value is present this method returns a sequential Stream containing the value or
+ else returns an empty stream.
+get: If a value is present return value else throws NoSuchElementException.
+orElseThrow: This method is introduced in JDK10. Code wise there is no difference between this and above get method. 
+The reasoning behind this method is to use proper naming of the method. 
+

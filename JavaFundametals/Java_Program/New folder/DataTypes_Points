@@ -1,0 +1,100 @@
+Number is not a final class so you can extend it.
+
+String, StringBuilder, and StringBuffer - all are final classes.
+
+1. Remember that wrapper classes for primitives (java.lang.Boolean, java.lang.Integer, java.lang.Long, java.lang.Short etc.) are also final and so they cannot be extended.
+
+2. java.lang.Number, however, is not final. Integer, Long, Double etc. extend Number.
+
+3. java.lang.System is final as well.
+
+4.You may use underscore for all kinds of numbers including long, double, float, binary, as well as hex.  For example, the following are all valid numbers -
+int hex = 0xCAFE_BABE;
+float f = 9898_7878.333_333f;
+int bin = 0b1111_0000_1100_1100;
+
+You need to remember the following points about Boolean:
+
+1. Boolean class has two constructors - Boolean(String) and Boolean(boolean)
+The String constructor allocates a Boolean object representing the value true if the string argument is not null and is equal, ignoring case, to the string "true". Otherwise, allocate a Boolean object representing the value false. Examples: new Boolean("True") produces a Boolean object that represents true. new Boolean("yes") produces a Boolean object that represents false.
+
+The boolean constructor is self explanatory.
+
+2. Boolean class has two static helper methods for creating booleans - parseBoolean and valueOf.
+Boolean.parseBoolean(String ) method returns a primitive boolean and not a Boolean object (Note - Same is with the case with other parseXXX methods such as Integer.parseInt - they return primitives and not objects). The boolean returned represents the value true if the string argument is not null and is equal, ignoring case, to the string "true".
+
+Boolean.valueOf(String ) and its overloaded Boolean.valueOf(boolean ) version, on the other hand, work similarly but return a reference to either Boolean.TRUE or Boolean.FALSE wrapper objects. Observe that they dont create a new Boolean object but just return the static constants TRUE or FALSE defined in Boolean class.
+
+3. When you use the equality operator ( == ) with booleans, if exactly one of the operands is a Boolean wrapper, it is first unboxed into a boolean primitive and then the two are compared (JLS 15.21.2). If both are Boolean wrappers, then their references are compared just like in the case of other objects. Thus, new Boolean("true") == new Boolean("true") is false, but new Boolean("true") == Boolean.parseBoolean("true") is true.
+
+
+indexOf's accepts Object as a parameter. Although 1.0 is not an object, it will be boxed into a Double object.
+
+ArrayList does not have a field named length. It does have a method named size() 
+
+longValue is a non-static method in Long class.
+
+Long (or any wrapper class) does not have a no-args constructor, so new Long() is invalid.
+
+
+Chaining to use a value of a variable at the time of declaration is not allowed. Had b and c been already declared, it would have been valid. For example, the following is valid:
+  int  b = 0, c = 0;
+  int a = b = c = 100;
+Even the following is valid:
+  int  b , c;  //Not initializing b and c here.
+  int a = b = c = 100; //declaring a and initializing c, b, and a at the same time.
+Notice the order of initialization of the variables - c is initialized first, b is initialized next by assigning to it the value of c. Finally, a is initialized.
+
+
+Java does not allow chained initialization in declaration
+
+18.Since the main() method is in the same class, it can call private methods in the
+class. this() may only be called as the first line of a constructor. this.variableName
+can be called from any instance method to refer to an instance variable. It cannot be
+called from a static method because there is no instance of the class to refer to.
+
+
+17.public class StringBuilders {
+ public static StringBuilder work(StringBuilder a,
+StringBuilder b) {
+ a = new StringBuilder("a");
+ b.append("b");
+ return a;
+ }
+ public static void main(String[] args) {
+ StringBuilder s1 = new StringBuilder("s1");
+ StringBuilder s2 = new StringBuilder("s2");
+ StringBuilder s3 = work(s1, s2);
+ System.out.println("s1 = " + s1);//s1 = s1
+ System.out.println("s2 = " + s2);//s2 = s2b
+ System.out.println("s3 = " + s3);//s3 = a
+ }
+}
+20. Which code can be inserted to have the code print 2?
+public class BirdSeed {
+ private int numberBags;
+ boolean call;
+ public BirdSeed() {
+ // LINE 1
+ call = false;
+ // LINE 2
+ }
+ public BirdSeed(int numberBags) {
+ this.numberBags = numberBags;
+ }
+ public static void main(String[] args) {
+ BirdSeed seed = new BirdSeed();
+ System.out.println(seed.numberBags);
+ } }
+ 
+A. Replace line 1 with BirdSeed(2);
+B. Replace line 2 with BirdSeed(2);
+C. Replace line 1 with new BirdSeed(2);
+D. Replace line 2 with new BirdSeed(2);
+E. Replace line 1 with this(2);
+F. Replace line 2 with this(2);
+
+Options A and B will not compile because constructors cannot be called without
+new. Options C and D will compile but will create a new object rather than setting the
+fields in this one. Option F will not compile because this() must be the first line of a
+constructor. Option E is correct.

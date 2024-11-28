@@ -1,0 +1,9 @@
+String courseID = "Comp-101";
+List<String> scores = new ArrayList<String> ();
+scores.add("100");
+scores.add("90");
+scores.add("80");
+scores.add("97");
+
+Map<String, ArrayList<String>> myMap = new HashMap<String, ArrayList<String>>();
+myMap.put(courseID, scores);

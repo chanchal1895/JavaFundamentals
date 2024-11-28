@@ -1,0 +1,19 @@
+Important points
+
+1.Even though foo is a method, you cannot put () in the import statement.
+2.Classes cannot be imported using "import static"
+3.The order of keywords for a static import must be "import static ... ".
+
+4.Syntax for importing static fields is:  import static <package>.<classname>.*; or import static                       <package>.<classname>.<fieldname>;
+
+5.The package declaration can never occur after an import statement.
+The order is:
+package statement.
+import statements
+class/ interface definitions.
+Important point to note here is YOU MUST READ THE QUESTIONS VERY CAREFULLY.
+
+6.Each object of a class has its own copy of each non-static member variable.
+7.All non-static/instance methods in a class are implicitly passed a 'this' parameter when called.
+	 
+

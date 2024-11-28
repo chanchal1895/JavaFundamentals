@@ -1,0 +1,8 @@
+Introduction 
+Functional programming is a programming paradigm in which we try to bind everything in pure mathematical functions style. It is a declarative type of programming style. Its main focus is on “what to solve” in contrast to an imperative style where the main focus is “how to solve”. It uses expressions instead of statements. An expression is evaluated to produce a value whereas a statement is executed to assign variables. Those functions have some special features discussed below. 
+
+Functional Programming is based on Lambda Calculus: 
+Lambda calculus is a framework developed by Alonzo Church to study computations with functions. It can be called as the smallest programming language in the world. It gives the definition of what is computable. Anything that can be computed by lambda calculus is computable. It is equivalent to Turing machine in its ability to compute. It provides a theoretical framework for describing functions and their evaluation. It forms the basis of almost all current functional programming languages. 
+Fact: Alan Turing was a student of Alonzo Church who created Turing machine which laid the foundation of imperative programming style. 
+
+https://www.geeksforgeeks.org/functional-programming-paradigm/

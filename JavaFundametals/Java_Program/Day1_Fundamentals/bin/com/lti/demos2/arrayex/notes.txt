@@ -1,0 +1,66 @@
+20. Arrays are Java objects. If you create an array of 5 Strings, there will be 6 objects created.
+
+21. Arrays should be
+Declared. (int[] a; String b[]; Object []c; Size should not be specified now)
+Allocated (constructed). ( a = new int[10]; c = new String[arraysize] )
+Initialized. for (int i = 0; i < a.length; a[i++] = 0)
+22. The above three can be done in one step.
+
+int a[] = { 1, 2, 3 }; (or )
+
+int a[] = new int[] { 1, 2, 3 }; But never specify the size with the new statement.
+
+23. Java arrays are static arrays. Size has to be specified at compile time. 
+Array.length returns array's size. (Use Vectors for dynamic purposes).
+
+ 24. Array size is never specified with the reference variable, 
+ it is always maintained with the array object. It is maintained in array.length, which is a final instance variable.
+
+25. Anonymous arrays can be created and used like this: new int[] {1,2,3} or new int[10]
+
+26. Arrays with zero elements can be created. args array to the main method will be a zero element array if no command parameters are specified. In this case args.length is 0.
+
+27. Comma after the last initializer in array declaration is ignored.
+
+int[] i = new int[2] { 5, 10}; // Wrong
+
+int i[5] = { 1, 2, 3, 4, 5}; // Wrong
+
+int[] i[] = {{}, new int[] {} }; // Correct
+
+int i[][] = { {1,2}, new int[2] }; // Correct
+
+int i[] = { 1, 2, 3, 4, } ; // Correct
+
+28. Array indexes start with 0. Index is an int data type.
+
+29. Square brackets can come after datatype or before/after variable name.
+ White spaces are fine. Compiler just ignores them.
+ 
+ 
+ 
+ 
+ 
+ 30. Arrays declared even as member variables also need to be allocated memory explicitly.
+
+static int a[];
+
+static int b[] = {1,2,3};
+
+public static void main(String s[]) {
+
+System.out.println(a[0]); // Throws a null pointer exception
+
+System.out.println(b[0]); // This code runs fine
+
+System.out.println(a); // Prints 'null'
+
+System.out.println(b); // Prints a string which is returned by toString
+
+}
+
+31. Once declared and allocated (even for local arrays inside methods), array elements are automatically initialized to the default values.
+
+32. If only declared (not constructed), member array variables default to null, but local array variables will not default to null.
+
+ 33. Java doesn't support multidimensional arrays formally, but it supports arrays of arrays. From the specification - "The number of bracket pairs indicates the depth of array nesting." So this can perform as a multidimensional array. (no limit to levels of array nesting)

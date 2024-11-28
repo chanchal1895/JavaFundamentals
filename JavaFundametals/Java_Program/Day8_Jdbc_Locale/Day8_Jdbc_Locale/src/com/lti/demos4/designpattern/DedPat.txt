@@ -1,0 +1,16 @@
+creational design pattern:
+ 	Factory pattern, Abstract Factory pattern, Singleton pattern, Builder pattern, and prototype pattern are examples of creational design patterns.
+ 	 These are mainly involved with the creation of objects.
+ 	 
+ 	 
+Structural design pattern: 
+
+	They are mostly used for creating a class structure. 
+	Adapter, Bridge, and composite pattern are popular structural design patterns.
+
+
+Behavioral design pattern: 
+
+
+	These provide better interaction between the objects along with the flexibility for easily extending the implementation. 
+	Observer patterns, strategy pattern, etc. are some examples of the behavioral patterns.
